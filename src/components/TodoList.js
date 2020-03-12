@@ -3,12 +3,12 @@
 import React from "react";
 
 const ToDoList = props => {
-  console.log(props);
   return (
     <div>
       {props.list.map(item => {
         return (
           <h1
+            key={item.id}
             className={`toDo ${item.done ? "done" : ""}`}
             onClick={e => props.done(item.id)}
           >

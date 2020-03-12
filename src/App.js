@@ -35,6 +35,7 @@ class App extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     this.setState({
       list: [
         ...this.state.list,
@@ -70,11 +71,11 @@ class App extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="app">
         <h2>Welcome to your Todo App!</h2>
 
-        <form onSubmit={this.handleSubmit}>
-          <label>To Do </label>
+        <form className="form" onSubmit={this.handleSubmit}>
+          <label>What Do I need To Remember To Do?</label>
           <input
             value={this.state.formValue}
             name="toDo"
@@ -85,7 +86,10 @@ class App extends React.Component {
           <button> add</button>
         </form>
         <ToDoList done={this.toggleDone} list={this.state.list} />
-        <button onClick={this.clearDone}> Hi</button>
+        <button className="clear-contents" onClick={this.clearDone}>
+          {" "}
+          Clear Contents
+        </button>
       </div>
     );
   }
