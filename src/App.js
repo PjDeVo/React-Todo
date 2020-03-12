@@ -1,5 +1,6 @@
 import React from "react";
-import List from "./components/List";
+import "./components/Todo.css";
+import ToDoList from "./components/TodoList";
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -9,7 +10,19 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      list: ["something", "something else"],
+      list: [
+        {
+          toDo: "something",
+          done: false,
+          id: 0
+        },
+        {
+          toDo: "something else",
+          done: false,
+          id: 1
+        }
+      ],
+
       formValue: " "
     };
   }
@@ -24,6 +37,20 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({
       list: [...this.state.list, this.state.formValue]
+    });
+  };
+
+  toggleDone = id => {
+    this.setState({
+      list: this.state.list.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            done: !item.done
+          };
+        }
+        return item;
+      })
     });
   };
   render() {
@@ -42,7 +69,7 @@ class App extends React.Component {
           />
           <button> add</button>
         </form>
-        <List list={this.state.list} />
+        <ToDoList done={this.toggleDone} list={this.state.list} />
       </div>
     );
   }
