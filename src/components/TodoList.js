@@ -12,7 +12,6 @@ const ToDoList = props => {
             className={`toDo ${item.done ? "done" : ""}`}
             onClick={e => props.done(item.id)}
           >
-            {" "}
             {item.toDo}
           </h1>
         );

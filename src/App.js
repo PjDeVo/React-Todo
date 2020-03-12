@@ -23,7 +23,7 @@ class App extends React.Component {
         }
       ],
 
-      formValue: " "
+      formValue: ""
     };
   }
 
@@ -36,7 +36,14 @@ class App extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.setState({
-      list: [...this.state.list, this.state.formValue]
+      list: [
+        ...this.state.list,
+        {
+          toDo: this.state.formValue,
+          done: false,
+          id: this.state.list.length + 1
+        }
+      ]
     });
   };
 
@@ -50,6 +57,14 @@ class App extends React.Component {
           };
         }
         return item;
+      })
+    });
+  };
+
+  clearDone = e => {
+    this.setState({
+      list: this.state.list.filter(item => {
+        return !item.done;
       })
     });
   };
@@ -70,6 +85,7 @@ class App extends React.Component {
           <button> add</button>
         </form>
         <ToDoList done={this.toggleDone} list={this.state.list} />
+        <button onClick={this.clearDone}> Hi</button>
       </div>
     );
   }

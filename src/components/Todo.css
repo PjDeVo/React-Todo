@@ -1,3 +1,10 @@
+.toDo {
+  border: 1px solid black;
+  width: 400px;
+  background-color: gray;
+}
+
 .done {
   text-decoration: line-through;
+  color: red;
 }
